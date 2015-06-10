@@ -9,7 +9,6 @@
 # data extracted, and then moved to a designated 'done' directory. 
 # (this is more a file processing metaphor more than streaming)
 #
-# Version 120128.1 Robert Mckeown
 #
 ############################################
 
@@ -54,7 +53,7 @@ class LogStash::Inputs::SCAFile < LogStash::Inputs::Base
           queue << event
         end
 
-        event = LogStash::Event.new("message" => "SCAWindowMarker")
+        event = LogStash::Event.new("SCAWindowMarker" => true)
         decorate(event)
         queue << event
 
