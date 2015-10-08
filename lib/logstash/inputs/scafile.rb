@@ -45,9 +45,9 @@ class LogStash::Inputs::SCAFile < LogStash::Inputs::Base
 
       begin
 
-        File.read(filename).lines.each do | line | 
+        File.open(filename).each_line do | line | 
 
-          event = LogStash::Event.new("message" => line)
+          event = LogStash::Event.new("message" => line, "filename" => filename)
           decorate(event)
 
           queue << event
